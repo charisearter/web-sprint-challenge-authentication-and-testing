@@ -24,13 +24,23 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
-1. Differences between using _sessions_ or _JSON Web Tokens_ for authentication.
+Q1. Differences between using sessions or JSON Web Tokens for authentication.
 
-2. What does `bcrypt` do to help us store passwords in a secure manner.
+A1. Sessions are stored in the server’s memory on a cookie to verify the user and JSON web tokens are stateless and has a secret. It is created when the user logs in and the server looks for the JWT header to validate the request form the user.
 
-3. How are unit tests different from integration and end-to-end testing.
+Q2. What does bcrypt do to help us store passwords in a secure manner?
 
-4. How _Test Driven Development_ changes the way we write applications and tests.
+A2.  It incorporates a salt to block rainbow table attacks. It takes the password and hashes it to a string that can’t be reversed back into the user’s password.
+
+Q3. How are unit tests different from integration and end-to-end testing?
+
+A3.  Unit tests only test the functionality of on unit of code to see if it works (ex. One function). Integration tests how multiple units work together in the code and End-to-end test how the user would interact with the code.
+
+Q4. How Test Driven Development changes the way we write applications and tests?
+
+A4.  We write the tests before we write the code. The tests fail before the code is written making in more efficient because there is no need to rewrite codes for tests, fewer bugs and better organized. It’s good for testing units of code.
+
+
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
@@ -52,7 +62,7 @@ Your finished project must include all of the following requirements:
 - [x] An authentication workflow with functionality for account creation and login implemented inside `/auth/auth-router.js`. A `user` has `username` and `password`. Both properties are required.
 - [x] Middleware used to restrict access to resources for non authenticated requests. Use the file: `./auth/authenticate-middleware.js` as a starting point.
 - [x] Configuration for running tests using `Jest`.
-- [ ] A **minimum o 2 tests** per API endpoint.
+- [x] A **minimum o 2 tests** per API endpoint.
 
 **Note**: the database already has the users table, but if you run into issues, the migrations are available.
 
