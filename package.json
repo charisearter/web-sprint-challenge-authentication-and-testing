@@ -28,7 +28,8 @@
     "init": "^0.1.2",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.21.2",
-    "sqlite3": "^4.1.1"
+    "sqlite3": "^4.1.1",
+    "supertest": "^4.0.2"
   },
   "devDependencies": {
     "jest": "^26.1.0",
