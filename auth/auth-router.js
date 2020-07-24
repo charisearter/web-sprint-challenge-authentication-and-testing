@@ -2,7 +2,8 @@ const router = require('express').Router();
 const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken"); // installed library
 
-const Jokes = require("../jokes/jokesModel.js");
+//check users to see if valid 
+const Users = require("../users/usersModel.js");
 const { isValid } = require("../users/users-service.js");
 
 
@@ -16,7 +17,7 @@ router.post('/register', (req, res) => {
 
         credentials.password = hash;
 
-        Jokes.add(credentials)
+        Users.add(credentials)
             .then(user => {
                 const token = makeJwt(user);
                 res.status(201).json({ data: user, token });
@@ -30,18 +31,18 @@ router.post('/register', (req, res) => {
         });
     }
 });
-
+//username login
 router.post('/login', (req, res) => {
   const { username, password } = req.body;
 
     if (isValid(req.body)) {
-        Jokes.findBy({ username: username })
+        Users.findBy({ username: username })
             .then(([user]) => {
                 console.log("user", user);
                 if (user && bcryptjs.compareSync(password, user.password)) {
                     const token = makeJwt(user); //make a new token for user
 
-                    res.status(200).json({ message: "Here is your token", token });
+                    res.status(200).json({ message: "Here have a token", token });
                 } else { //no token no pass
                     res.status(401).json({ message: "Your credentials are invalid." });
                 }
