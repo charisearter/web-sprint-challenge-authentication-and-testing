@@ -1,4 +1,4 @@
-const db = require("../data/db-config.js");
+const db = require("../database/dbConfig.js");
 //model to help validate users
 module.exports = {
     add,
