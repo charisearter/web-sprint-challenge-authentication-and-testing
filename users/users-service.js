@@ -1,3 +1,6 @@
+//validates the user
+
+
 module.exports = {
 	isValid,
 };

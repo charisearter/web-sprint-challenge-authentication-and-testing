@@ -16,7 +16,7 @@ router.post('/register', (req, res) => {
 
         credentials.password = hash;
 
-        Users.add(credentials)
+        Jokes.add(credentials)
             .then(user => {
                 const token = makeJwt(user);
                 res.status(201).json({ data: user, token });
@@ -35,7 +35,7 @@ router.post('/login', (req, res) => {
   const { username, password } = req.body;
 
     if (isValid(req.body)) {
-        Users.findBy({ username: username })
+        Jokes.findBy({ username: username })
             .then(([user]) => {
                 console.log("user", user);
                 if (user && bcryptjs.compareSync(password, user.password)) {
