@@ -4,5 +4,21 @@
 */
 
 module.exports = (req, res, next) => {
-  res.status(401).json({ you: 'shall not pass!' });
+	const token = req.headers.authorization;
+	const secret = process.env.JWT_SECRET || "keep it a secret";
+	console.log(token);
+	if (token) {
+		jwt.verify(token, secret, (err, decodedToken) => {
+			if (err) {
+				console.log(err),
+					res.status(401).json({ you: "there was an error with your token" });
+			} else {
+        req.jwt = decodedToken;
+        next();
+      }
+		});
+	} else {
+  res.status(401).json({ you: "shall not pass!" });
+  }
 };
+
